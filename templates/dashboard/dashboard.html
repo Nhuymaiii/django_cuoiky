@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doanh số bán hàng</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/web.css' %}">
+</head>
+<body>
+    <h1 id="title">TRỰC QUAN HÓA OYO</h1> 
+
+    <div id="nav">
+        <button id="dash1" onclick="showDashboard('dash1')">Tổng Quan</button>
+        <button id="dash2" onclick="showDashboard('dash2')">Yếu tố nào khiến khách hàng đánh giá cao?</button>
+    </div>
+
+    <div id="chart-container">
+        <!-- Dashboard 1: Q1 - Q8 -->
+        <div class="dashboard" id="dash1-charts">
+            <svg id="chart-Q1" width="375" height="275"></svg>
+            <svg id="chart-Q2" width="375" height="275"></svg>
+            <svg id="chart-Q3" width="375" height="275"></svg>
+            <svg id="chart-Q4" width="375" height="275"></svg>
+            <svg id="chart-Q5" width="375" height="275"></svg>
+            <svg id="chart-Q6" width="375" height="275"></svg>
+            <svg id="chart-Q7" width="375" height="275"></svg>
+            <svg id="chart-Q8" width="375" height="275"></svg>
+        </div>
+
+        <!-- Dashboard 2: Q9 - Q16 -->
+        <div class="dashboard" id="dash2-charts">
+            <svg id="chart-Q9" width="375" height="275"></svg>
+            <svg id="chart-Q10" width="375" height="275"></svg>
+            <svg id="chart-Q11" width="375" height="275"></svg>
+            <svg id="chart-Q12" width="375" height="275"></svg>
+            <svg id="chart-Q13" width="375" height="275"></svg>
+            <svg id="chart-Q14" width="375" height="275"></svg>
+            <svg id="chart-Q15" width="375" height="275"></svg>
+            <svg id="chart-Q16" width="375" height="275"></svg>
+        </div>
+    </div>
+
+    <script>
+        function showDashboard(dashId) {
+            // Ẩn tất cả dashboard
+            document.querySelectorAll(".dashboard").forEach(d => {
+                d.style.display = "none";
+            });
+
+            // Hiện dashboard được chọn
+            const targetDash = document.getElementById(`${dashId}-charts`);
+            targetDash.style.display = "grid";
+
+            // Highlight nút đang chọn
+            document.querySelectorAll("#nav button").forEach(btn => {
+                btn.classList.remove("active");
+            });
+            document.getElementById(dashId).classList.add("active");
+
+            // Gọi các hàm vẽ biểu đồ tương ứng
+            try {
+                if (dashId === 'dash1') {
+                    drawChartQ1();
+                    drawChartQ2();
+                    drawChartQ3();
+                    drawChartQ4();
+                    drawChartQ5();
+                    drawChartQ6();
+                    drawChartQ7();
+                    drawChartQ8();
+                } else if (dashId === 'dash2') {
+                    drawChartQ9();
+                    drawChartQ10();
+                    drawChartQ11();
+                    drawChartQ12();
+                    drawChartQ13();
+                    drawChartQ14();
+                    drawChartQ15();
+                    drawChartQ16();
+                }
+            } catch (error) {
+                console.error("Lỗi khi vẽ biểu đồ:", error);
+            }
+        }
+
+        // Gọi dashboard đầu tiên khi load trang
+        window.onload = () => {
+            showDashboard('dash1');
+        };
+
+        // Truyền dữ liệu từ view vào JavaScript
+        const q1_values = {{ q1_values|safe }};
+        console.log("q1_values:", q1_values);
+        const q2_values = {{ q2_values|safe }};
+        console.log("q2_values:", q2_values);
+        const q3_values = {{ q3_values|safe }};
+        console.log("q3_values:", q3_values);
+        const q4_values = {{ q4_values|safe }};
+        console.log("q4_values:", q4_values);
+        const q5_values = {{ q5_values|safe }};
+        console.log("q5_values:", q5_values);
+        const q6_values = {{ q6_values|safe }};
+        console.log("q6_values:", q6_values);
+        const q7_values = {{ q7_values|safe }};
+        console.log("q7_values:", q7_values);
+        const q8_values = {{ q8_values|safe }};
+        console.log("q8_values:", q8_values);
+        const q9_values = {{ q9_values|safe }};
+        console.log("q9_values:", q9_values);
+        const q10_values = {{ q10_values|safe }};
+        console.log("q10_values:", q10_values);
+        const q11_values = {{ q11_values|safe }};
+        console.log("q11_values:", q11_values);
+        const q12_values = {{ q12_values|safe }};
+        console.log("q12_values:", q12_values);
+        const q13_values = {{ q13_values|safe }};
+        console.log("q13_values:", q13_values);
+        const q14_values = {{ q14_values|safe }};
+        console.log("q14_values:", q14_values);
+        const q15_values = {{ q15_values|safe }};
+        console.log("q15_values:", q15_values);
+        const q16_values = {{ q16_values|safe }};
+        console.log("q16_values:", q16_values);
+
+        
+    </script>
+
+    <!-- Nạp các script từ static files -->
+    <script src="{% static 'js/Q1.js' %}" defer></script>
+    <script src="{% static 'js/Q2.js' %}" defer></script>
+    <script src="{% static 'js/Q3.js' %}" defer></script>
+    <script src="{% static 'js/Q4.js' %}" defer></script>
+    <script src="{% static 'js/Q5.js' %}" defer></script>
+    <script src="{% static 'js/Q6.js' %}" defer></script>
+    <script src="{% static 'js/Q7.js' %}" defer></script>
+    <script src="{% static 'js/Q8.js' %}" defer></script>
+    <script src="{% static 'js/Q9.js' %}" defer></script>
+    <script src="{% static 'js/Q10.js' %}" defer></script>
+    <script src="{% static 'js/Q11.js' %}" defer></script>
+    <script src="{% static 'js/Q12.js' %}" defer></script>
+    <script src="{% static 'js/Q13.js' %}" defer></script>
+    <script src="{% static 'js/Q14.js' %}" defer></script>
+    <script src="{% static 'js/Q15.js' %}" defer></script>
+    <script src="{% static 'js/Q16.js' %}" defer></script>
+</body>
+</html>

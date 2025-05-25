@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listing List</title>
+    <!-- Load CSS nếu cần (tùy chọn, bạn có thể thêm file web.css nếu đã tạo) -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/web.css' %}">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listing Data</h1>
+    {% if listings %}
+        <table>
+            <thead>
+                <tr>
+                    <!-- Danh sách tất cả các cột của model Listing -->
+                    <th>Accommodates</th>
+                    <th>Availability 30</th>
+                    <th>Bathrooms</th>
+                    <th>Bed Type</th>
+                    <th>Bedrooms</th>
+                    <th>Beds</th>
+                    <th>Calculated Host Listings Count</th>
+                    <th>Cancellation Policy</th>
+                    <th>Guests Included</th>
+                    <th>Has Availability</th>
+                    <th>Host Is Superhost</th>
+                    <th>Host Listings Count</th>
+                    <th>Instant Bookable</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Maximum Nights</th>
+                    <th>Number of Reviews</th>
+                    <th>Property Type</th>
+                    <th>Review Scores Checkin</th>
+                    <th>Review Scores Communication</th>
+                    <th>Review Scores Location</th>
+                    <th>Review Scores Rating</th>
+                    <th>Review Scores Value</th>
+                    <th>Room Type</th>
+                    <th>Price</th>
+                    <th>Amenities Wireless Internet</th>
+                    <th>Amenities Fire Extinguisher</th>
+                    <th>Amenities Laptop Friendly Workspace</th>
+                    <th>Amenities Heating</th>
+                    <th>Amenities Wheelchair Accessible</th>
+                    <th>Amenities Elevator in Building</th>
+                    <th>Amenities Dogs</th>
+                    <th>Amenities Cats</th>
+                    <th>Amenities Washer/Dryer</th>
+                    <th>Amenities Smoking Allowed</th>
+                    <th>Amenities First Aid Kit</th>
+                    <th>Amenities Pets Live on This Property</th>
+                    <th>Amenities Pool</th>
+                    <th>Amenities Lock on Bedroom Door</th>
+                    <th>Amenities Smoke Detector</th>
+                    <th>Amenities Shampoo</th>
+                    <th>Amenities Buzzer/Wireless Intercom</th>
+                    <th>Amenities Safety Card</th>
+                    <th>Amenities Breakfast</th>
+                    <th>Amenities Other Pets</th>
+                    <th>Amenities Indoor Fireplace</th>
+                    <th>Amenities Iron</th>
+                    <th>Amenities Hair Dryer</th>
+                    <th>Amenities Gym</th>
+                    <th>Amenities Family/Kid Friendly</th>
+                    <th>Amenities Internet</th>
+                    <th>Amenities Hot Tub</th>
+                    <th>Amenities Washer</th>
+                    <th>Amenities Dryer</th>
+                    <th>Amenities Pets Allowed</th>
+                    <th>Amenities 24-Hour Check-in</th>
+                    <th>Amenities Cable TV</th>
+                    <th>Amenities Air Conditioning</th>
+                    <th>Amenities Hangers</th>
+                    <th>Amenities Doorman</th>
+                    <th>Amenities Essentials</th>
+                    <th>Amenities Carbon Monoxide Detector</th>
+                    <th>Amenities Suitable for Events</th>
+                    <th>Amenities Free Parking on Premises</th>
+                    <th>Amenities TV</th>
+                    <th>Amenities Kitchen</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for listing in listings %}
+                <tr>
+                    <td>{{ listing.accommodates }}</td>
+                    <td>{{ listing.availability_30 }}</td>
+                    <td>{{ listing.bathrooms }}</td>
+                    <td>{{ listing.bed_type }}</td>
+                    <td>{{ listing.bedrooms }}</td>
+                    <td>{{ listing.beds }}</td>
+                    <td>{{ listing.calculated_host_listings_count }}</td>
+                    <td>{{ listing.cancellation_policy }}</td>
+                    <td>{{ listing.guests_included }}</td>
+                    <td>{{ listing.has_availability|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.host_is_superhost|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.host_listings_count }}</td>
+                    <td>{{ listing.instant_bookable|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.latitude }}</td>
+                    <td>{{ listing.longitude }}</td>
+                    <td>{{ listing.maximum_nights }}</td>
+                    <td>{{ listing.number_of_reviews }}</td>
+                    <td>{{ listing.property_type }}</td>
+                    <td>{{ listing.review_scores_checkin }}</td>
+                    <td>{{ listing.review_scores_communication }}</td>
+                    <td>{{ listing.review_scores_location }}</td>
+                    <td>{{ listing.review_scores_rating }}</td>
+                    <td>{{ listing.review_scores_value }}</td>
+                    <td>{{ listing.room_type }}</td>
+                    <td>{{ listing.price }}</td>
+                    <td>{{ listing.amenities_wireless_internet|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_fire_extinguisher|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_laptop_friendly_workspace|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_heating|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_wheelchair_accessible|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_elevator_in_building|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_dogs|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_cats|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_washer_dryer|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_smoking_allowed|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_first_aid_kit|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_pets_live_on_this_property|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_pool|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_lock_on_bedroom_door|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_smoke_detector|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_shampoo|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_buzzer_wireless_intercom|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_safety_card|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_breakfast|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_other_pets|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_indoor_fireplace|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_iron|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_hair_dryer|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_gym|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_family_kid_friendly|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_internet|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_hot_tub|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_washer|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_dryer|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_pets_allowed|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_24_hour_check_in|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_cable_tv|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_air_conditioning|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_hangers|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_doorman|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_essentials|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_carbon_monoxide_detector|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_suitable_for_events|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_free_parking_on_premises|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_tv|yesno:"Yes,No" }}</td>
+                    <td>{{ listing.amenities_kitchen|yesno:"Yes,No" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No listings available.</p>
+    {% endif %}
+</body>
+</html>
