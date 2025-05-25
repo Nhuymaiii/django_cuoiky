@@ -1,0 +1,97 @@
+body {
+    font-family: Calibri, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#title {
+    margin: 0 0 10px 220px;
+    padding: 10px;
+    background-color: #7b1717;
+    border: 1px solid #0f0f0f;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fffefd;
+    text-align: center;
+}
+
+#nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    text-align: center;
+}
+
+#nav button {
+    padding: 10px 10px;
+    margin: 30px 0;
+    border: none;
+    background-color: #ea4e3c;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 13px;
+    transition: background 0.3s ease-in-out;
+    width: 80%;
+}
+
+#nav button:hover {
+    background-color: #cd4628;
+}
+
+#nav button.active {
+    background-color: #6d190f;
+}
+
+#chart-container {
+    flex: 1;
+    margin-left: 200px;
+    padding: 20px;
+    width: calc(100% - 220px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.dashboard {
+    display: none;
+    grid-template-columns: repeat(4, 1fr); /* 4 cột */
+    grid-template-rows: 2fr 2fr; /* Hàng dưới gấp đôi hàng trên */
+    gap: 10px; /* Khoảng cách giữa các chart */
+    justify-items: center;
+    align-items: stretch; /* Đảm bảo các ô trong lưới trải đều */
+    width: 100%;
+    max-width: 1300px; /* Giới hạn chiều rộng tổng thể */
+    margin-top: 20px;
+}
+
+#chart-container svg {
+    background: #fff;
+    border: 2px solid #831109;
+    border-radius: 5px;
+    box-sizing: border-box; /* Đảm bảo border không làm tăng kích thước */
+    width: 100%; /* Lấp đầy ô lưới */
+    height: 100%; /* Lấp đầy ô lưới */
+    max-width: 375px; /* Kích thước tối đa cho hàng trên */
+    max-height: 275px; /* Kích thước tối đa cho hàng trên */
+}
+
+/* Tăng kích thước cho các chart ở hàng dưới (hàng 2) */
+.dashboard svg:nth-child(n+9) {
+    max-width: 375px; /* Gấp đôi hàng trên */
+    max-height: 275px; /* Gấp đôi hàng trên */
+    width: 100%; /* Đảm bảo lấp đầy không gian */
+    height: 100%; /* Đảm bảo lấp đầy không gian */
+}
